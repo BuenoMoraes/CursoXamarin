@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "uLDy9IClAsO1Q9k1jdK4O0UI7nAlVVl+ExkBwSIDdp5HWEldT7gsTBEDy+q68KCyWZJAGUKyG/OgeE04N2+agg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin.iOS\\CursoXamarin.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\TMax\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\TMax\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\TMax\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+  ],
+  "logs": []
+}

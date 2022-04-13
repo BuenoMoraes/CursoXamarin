@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "yaFivGx5qSJ5+FHexeNLS/5t24/h2mfLH6G2XiLo/bd5XrLlwhjCz267w3mu2EvJ0NEtCwGQfXPnUCUdf9pcFw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\TMax\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\TMax\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\TMax\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\TMax\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\TMax\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+  ],
+  "logs": []
+}
