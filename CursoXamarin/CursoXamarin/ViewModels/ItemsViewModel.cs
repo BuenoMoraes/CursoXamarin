@@ -25,7 +25,7 @@ namespace CursoXamarin.ViewModels
 
             ItemTapped = new Command<Item>(OnItemSelected);
 
-            AddItemCommand = new Command(OnAddItem);
+            //AddItemCommand = new Command(OnAddItem);
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -67,10 +67,10 @@ namespace CursoXamarin.ViewModels
             }
         }
 
-        private async void OnAddItem(object obj)
+        /*private async void OnAddItem(object obj)
         {
             await Shell.Current.GoToAsync(nameof(NewItemPage));
-        }
+        }*/
 
         async void OnItemSelected(Item item)
         {

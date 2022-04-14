@@ -14,7 +14,7 @@ namespace CursoXamarin
             InitializeComponent();
 
             //DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new ItemsPage());
+            MainPage = new NavigationPage(new ListagemView());
         }
 
         protected override void OnStart()
