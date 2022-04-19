@@ -5,7 +5,6 @@ C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\nets
 C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\CursoXamarin.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
-C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\Views\ItemDetailPage.xaml.g.cs
 C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\CursoXamarin.AssemblyInfoInputs.cache
 C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\CursoXamarin.AssemblyInfo.cs
 C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\CursoXamarin.csproj.CoreCompileInputs.cache

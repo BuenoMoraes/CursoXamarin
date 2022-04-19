@@ -1,5 +1,5 @@
 ﻿using CursoXamarin.Models;
-using CursoXamarin.ViewModels;
+//using CursoXamarin.ViewModels;
 using CursoXamarin.Views;
 using System;
 using System.Collections.Generic;
