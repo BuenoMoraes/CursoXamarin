@@ -1,4 +1,5 @@
 ﻿using CursoXamarin.Models;
+using CursoXamarin.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,107 +13,53 @@ namespace CursoXamarin.Views
 {
     public partial class AgendamentoView : ContentPage
     {
-        public Agendamento Agendamento { get; set; }
-        public Veiculo Veiculo 
-        {
-            get
-            {
-                return Agendamento.Veiculo;
-            }
-            set
-            { 
-                Agendamento.Veiculo = value;
-            }
-        }
-
-        public string Nome 
-        {
-            get
-            {
-                return Agendamento.Nome;
-            }
-            set
-            {
-                Agendamento.Nome = value;
-            }
-
-        }
-
-        public string Fone 
-        {
-            get
-            {
-                return Agendamento.Fone;
-            }
-            set
-            {
-                Agendamento.Fone = value;
-            }
-
-        }
-        public string Email 
-        {
-            get
-            {
-                return Agendamento.Email;
-            }
-            set
-            {
-                Agendamento.Email = value;
-            }
-
-
-        }
-
-        DateTime dataAgendamento = DateTime.Today;
-
-        public DateTime DataAgendamento
-        {
-            get
-            {
-                return Agendamento.DataAgendamento;
-            }
-            set
-            {
-                Agendamento.DataAgendamento = value;
-            }
-        }
-
-        public TimeSpan HoraAgendamento 
-        {
-            get
-            {
-                return Agendamento.HoraAgendamento;
-            }
-            set
-            {
-                Agendamento.HoraAgendamento = value;
-            }
-
-        }
-
-
+        public AgendamentoViewModel ViewModel { get; set; }
 
         public AgendamentoView(Veiculo veiculo)
         {
             InitializeComponent();
-            this.Agendamento = new Agendamento();
-            this.Agendamento.Veiculo = veiculo;
-            this.BindingContext = this;
+            this.ViewModel = new AgendamentoViewModel(veiculo);
+            this.BindingContext = this.ViewModel;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Agendamento>(this, "Agendamento",
+                async (msg) =>
+                {
+                    var confirma = await DisplayAlert("Salvar Agendamento",
+                    "Deseja mesmo enviar o agendamento?",
+                    "sim", "não");
+
+                    if (confirma)
+                    {
+                        this.ViewModel.SalvarAgendamento();
+                    }
+                });
+
+            MessagingCenter.Subscribe<Agendamento>(this, "SucessoAgendamento",
+               (msg) =>
+               {
+                   DisplayAlert("Agendamento", "Agendamento salvo com sucesso!", "ok");
+               });
+
+            MessagingCenter.Subscribe<ArgumentException>(this, "FalhaAgendamento",
+                (msg) =>
+                {
+                    DisplayAlert("Agendamento", "Falha ao agendar o test drive! Verifique os dados e tente novamente mais tarde!", "ok");
+                });
+
 
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        protected override void OnDisappearing()
         {
-            DisplayAlert("Agendamento",
-string.Format(
-       @"Veículo:{0}
-       Nome: {1}
-       Fone: {2}
-       E-mail: {3}
-       Data Agendamento: {4}
-       Hora Agendamento:{5}",
-        Veiculo.Nome, Nome, Fone, Email, DataAgendamento.ToString("dd/MM/yyy"), HoraAgendamento), "OK");
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Agendamento>(this, "Agendamento");
+
+            MessagingCenter.Unsubscribe<Agendamento>(this, "SucessoAgendamento");
+            MessagingCenter.Unsubscribe<ArgumentException>(this, "FalhaAgendamento");
         }
     }
 }

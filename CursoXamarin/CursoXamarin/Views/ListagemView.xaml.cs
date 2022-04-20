@@ -1,4 +1,5 @@
 ﻿using CursoXamarin.Models;
+using CursoXamarin.ViewModels;
 //using CursoXamarin.ViewModels;
 using CursoXamarin.Views;
 using System;
@@ -16,31 +17,35 @@ namespace CursoXamarin.Views
 
     public partial class ListagemView : ContentPage
     {
-        //ItemsViewModel _viewModel;
 
-        public List<Veiculo> Veiculos { get; set; }
+        public ListagemViewModel ViewModel { get; set; }
 
         public ListagemView()
         {
             InitializeComponent();
-
-            this.Veiculos = new ListagemVeiculos().Veiculos;
-            this.BindingContext = this;
-
-            //BindingContext = _viewModel = new ItemsViewModel();
+            this.ViewModel = new ListagemViewModel();
+            this.BindingContext = this.ViewModel;
         }
-
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            //_viewModel.OnAppearing();
+
+            MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado",
+               (msg) =>
+               {
+                   Navigation.PushAsync(new DetalheView(msg));
+               });
+
+            await this.ViewModel.GetVeiculos();
+
         }
 
-        private void listViewVeiculos_ItemTapped(object sender, ItemTappedEventArgs e)
+         protected override void OnDisappearing()
         {
-            var veiculo = (Veiculo)e.Item;
+            base.OnDisappearing();
 
-            Navigation.PushAsync(new DetalheView(veiculo));
+            MessagingCenter.Unsubscribe<Veiculo>(this, "VeiculoSelecionado");
         }
+
     }
 }

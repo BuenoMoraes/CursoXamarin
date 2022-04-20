@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin.csproj": {}
+    "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin.csproj": {}
   },
   "projects": {
-    "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin.csproj": {
+    "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin.csproj",
+        "projectUniqueName": "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin.csproj",
         "projectName": "CursoXamarin",
-        "projectPath": "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin.csproj",
+        "projectPath": "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin.csproj",
         "packagesPath": "C:\\Users\\TMax\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin\\obj\\",
+        "outputPath": "C:\\Users\\TMax\\source\\repos\\CursoXamarin\\CursoXamarin\\CursoXamarin\\CursoXamarin\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\TMax\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,11 +40,19 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "dependencies": {
+            "Microsoft.Net.Http": {
+              "target": "Package",
+              "version": "[2.2.29, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",
