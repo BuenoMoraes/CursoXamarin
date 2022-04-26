@@ -34,3 +34,6 @@ C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\CursoXamarin\b
 C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\CursoXamarin\bin\Debug\netstandard2.0\CursoXamarin.pdb
 C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\ref\CursoXamarin.dll
+C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\Views\LoginView.xaml.g.cs
+C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\Views\MasterDetailView.xaml.g.cs
+C:\Users\TMax\source\repos\CursoXamarin\CursoXamarin\CursoXamarin\CursoXamarin\obj\Debug\netstandard2.0\Views\MasterView.xaml.g.cs

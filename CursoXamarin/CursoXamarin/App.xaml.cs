@@ -1,4 +1,5 @@
-﻿using CursoXamarin.Services;
+﻿using CursoXamarin.Models;
+using CursoXamarin.Services;
 using CursoXamarin.Views;
 using System;
 using Xamarin.Forms;
@@ -13,12 +14,18 @@ namespace CursoXamarin
         {
             InitializeComponent();
 
-            //DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new ListagemView());
+            MainPage = new LoginView();
         }
 
         protected override void OnStart()
         {
+
+            MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin",
+               (usuario) =>
+               {
+                   // MainPage = new NavigationPage(new ListagemView());
+                   MainPage = new MasterDetailView(usuario);
+               });
         }
 
         protected override void OnSleep()

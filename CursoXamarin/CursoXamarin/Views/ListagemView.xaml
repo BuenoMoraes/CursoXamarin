@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CursoXamarin.Views.ListagemView"
-             Title="Listagem Veículos"
+             Title="Test Drive"
              xmlns:local="clr-namespace:CursoXamarin"  
              xmlns:vm="clr-namespace:CursoXamarin.ViewModels"
              xmlns:model="clr-namespace:CursoXamarin.Models"  
