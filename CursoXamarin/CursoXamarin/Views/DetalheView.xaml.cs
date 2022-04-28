@@ -13,21 +13,24 @@ namespace CursoXamarin.Views
 {
     public partial class DetalheView : ContentPage
     {
-        public Veiculo Veiculo { get; set; }
+        public Veiculo Veiculo { get; private set; }
 
-        public DetalheView(Veiculo veiculo)
+        public Usuario Usuario { get; private set; }
+
+        public DetalheView(Veiculo veiculo, Usuario usuario)
         {
             InitializeComponent();
             this.Veiculo = veiculo;
+            this.Usuario = usuario;
             this.BindingContext = new DetalheViewModel(veiculo); 
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<Veiculo>(this, "Proximo", (msg) =>
+            MessagingCenter.Subscribe<Veiculo>(this, "Proximo", (veiculo) =>
             {
-                Navigation.PushAsync(new AgendamentoView(msg));
+                Navigation.PushAsync(new AgendamentoView(veiculo, this.Usuario));
             });
         }
 

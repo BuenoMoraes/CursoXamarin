@@ -1,6 +1,8 @@
-﻿using CursoXamarin.Models;
+﻿using CursoXamarin.Media;
+using CursoXamarin.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -53,24 +55,36 @@ namespace CursoXamarin.ViewModels
             }
         }
 
+        private ImageSource fotoPerfil = "perfil.png";
+
+        public ImageSource FotoPerfil
+        {
+            get { return fotoPerfil; }
+            private set { 
+                fotoPerfil = value;
+                OnPropertyChanged();
+            }
+        }
+
         private readonly Usuario usuario;
 
         public ICommand EditarPerfilCommand { get; private set; }
         public ICommand EditarCommand { get; private set; }
         public ICommand SalvarCommand { get; private set; }
+        public ICommand TirarFotoCommand { get; private set; }
 
         public MasterViewModel(Usuario usuario)
         {
             this.usuario = usuario;
 
+            DefinirComandos(usuario);
+        }
+
+        private void DefinirComandos(Usuario usuairo)
+        { 
             EditarPerfilCommand = new Command(() =>
             {
                 MessagingCenter.Send<Usuario>(usuario, "EditarPerfil");
-            });
-
-            EditarCommand = new Command(() =>
-            {
-                Editando = true;
             });
 
             SalvarCommand = new Command(() =>
@@ -78,6 +92,23 @@ namespace CursoXamarin.ViewModels
                 Editando = false;
                 MessagingCenter.Send<Usuario>(usuario, "SucessoSalvarUsuario");
             });
+
+            EditarCommand = new Command(() =>
+            {
+                Editando = true;
+            });
+
+            TirarFotoCommand = new Command(() =>
+            {
+                DependencyService.Get<ICamera>().TirarFoto();
+            });
+
+            MessagingCenter.Subscribe<byte[]>(this, "FotoTirada",
+                (bytes) =>
+                {
+                    FotoPerfil = ImageSource.FromStream(
+                        () => new MemoryStream(bytes));
+                });
         }
     }
 }

@@ -19,33 +19,50 @@ namespace CursoXamarin.Views
     {
 
         public ListagemViewModel ViewModel { get; set; }
-
-        public ListagemView()
+        readonly Usuario usuario;
+        public ListagemView(Usuario usuario)
         {
             InitializeComponent();
             this.ViewModel = new ListagemViewModel();
+            this.usuario = usuario;
             this.BindingContext = this.ViewModel;
         }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
-            MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado",
-               (msg) =>
-               {
-                   Navigation.PushAsync(new DetalheView(msg));
-               });
+            AssinarMensagem();
 
             await this.ViewModel.GetVeiculos();
 
         }
 
-         protected override void OnDisappearing()
+        private void AssinarMensagem()
         {
-            base.OnDisappearing();
+            MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado",
+                           (veiculo) =>
+                           {
+                               Navigation.PushAsync(new DetalheView(veiculo, usuario));
+                           });
 
-            MessagingCenter.Unsubscribe<Veiculo>(this, "VeiculoSelecionado");
+            /*MessagingCenter.Subscribe<Exception>(this, "Falha Listagem",
+              (veiculo) =>
+              {
+                  DisplayAlert("Erro", "Ocorreu um erro ao obter a listagem de veículo", "OK");
+              });*/
+
+            
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            CancelarAssinar();
+        }
+
+        private void CancelarAssinar()
+        {
+            MessagingCenter.Unsubscribe<Veiculo>(this, "VeiculoSelecionado");
+            //MessagingCenter.Unsubscribe<Exception>(this, "Falha Listagem");
+        }
     }
 }
