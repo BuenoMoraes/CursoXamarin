@@ -43,6 +43,8 @@ namespace CursoXamarin.ViewModels
                     }
                     catch (Exception exc)
                     {
+                        Console.WriteLine("Erro no catch");
+                        Console.WriteLine(exc.Message);
                         MessagingCenter.Send<LoginException>(new
                             LoginException("Erro de comunicação com o servidor.", exc), "FalhaLogin");
                     }

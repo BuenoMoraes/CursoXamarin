@@ -15,14 +15,26 @@ namespace CursoXamarin
         {
             using (var cliente = new HttpClient())
             {
-                cliente.BaseAddress = new Uri("https://aluracar.herokuapp.com");
+                /*cliente.BaseAddress = new Uri("https://aluracar.herokuapp.com");
                 var camposFormulario = new FormUrlEncodedContent(new[]
                 {
                         new KeyValuePair<string, string>("email", login.email),
                         new KeyValuePair<string, string>("senha", login.senha)
                     });
-                var resultado = await cliente.PostAsync("/login", camposFormulario);
-
+                var resultado = await cliente.PostAsync("/login", camposFormulario);*/
+                cliente.BaseAddress = new Uri("http://localhost.biblioteca/api");
+                var camposFormulario = new FormUrlEncodedContent(new[]
+                {
+                        new KeyValuePair<string, string>("nome", "Cadastro via Xamarin"),
+                        new KeyValuePair<string, string>("telefone", "1234-5678"),
+                        new KeyValuePair<string, string>("email", "cadastro@gmail.com"),
+                        new KeyValuePair<string, string>("modelo", "veiculo1"),
+                        new KeyValuePair<string, string>("preco", "100.10"),
+                        new KeyValuePair<string, string>("data", "2022-02-04 12:00")
+                    });
+                var resultado = await cliente.PostAsync("/agendamentos", camposFormulario);
+                //Console.WriteLine(resultado.StatusCode);
+                //Console.WriteLine("Após cadastro");
                 return resultado;
             }
         }
