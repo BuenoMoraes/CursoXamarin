@@ -22,7 +22,8 @@ namespace CursoXamarin
                         new KeyValuePair<string, string>("senha", login.senha)
                     });
                 var resultado = await cliente.PostAsync("/login", camposFormulario);*/
-                cliente.BaseAddress = new Uri("http://localhost.biblioteca/api");
+                cliente.BaseAddress = new Uri("http://192.168.0.47:8000/api/agendamentos");
+                cliente.Timeout = TimeSpan.FromSeconds(200);
                 var camposFormulario = new FormUrlEncodedContent(new[]
                 {
                         new KeyValuePair<string, string>("nome", "Cadastro via Xamarin"),
@@ -32,7 +33,7 @@ namespace CursoXamarin
                         new KeyValuePair<string, string>("preco", "100.10"),
                         new KeyValuePair<string, string>("data", "2022-02-04 12:00")
                     });
-                var resultado = await cliente.PostAsync("/agendamentos", camposFormulario);
+                var resultado = await cliente.PostAsync("http://192.168.0.47:8000/api/agendamentos", camposFormulario);
                 //Console.WriteLine(resultado.StatusCode);
                 //Console.WriteLine("Após cadastro");
                 return resultado;
