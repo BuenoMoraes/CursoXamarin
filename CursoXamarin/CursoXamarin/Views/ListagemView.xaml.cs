@@ -20,10 +20,12 @@ namespace CursoXamarin.Views
 
         public ListagemViewModel ViewModel { get; set; }
 
-        public ListagemView()
+        Usuario usuario;
+        public ListagemView(Usuario usuario)
         {
             InitializeComponent();
             this.ViewModel = new ListagemViewModel();
+            this.usuario = usuario;
             this.BindingContext = this.ViewModel;
         }
         protected async override void OnAppearing()
@@ -31,9 +33,9 @@ namespace CursoXamarin.Views
             base.OnAppearing();
 
             MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado",
-               (msg) =>
+               (veiculo) =>
                {
-                   Navigation.PushAsync(new DetalheView(msg));
+                   Navigation.PushAsync(new DetalheView(veiculo, usuario));
                });
 
             await this.ViewModel.GetVeiculos();

@@ -27,6 +27,18 @@ namespace CursoXamarin.ViewModels
             }
         }
 
+        public Usuario Usuario
+        {
+            get
+            {
+                return Agendamento.Usuario;
+            }
+            set
+            {
+                Agendamento.Usuario = value;
+            }
+        }
+
         public string Nome
         {
             get
@@ -98,9 +110,10 @@ namespace CursoXamarin.ViewModels
             }
 
         }
-        public AgendamentoViewModel(Veiculo veiculo)
+        public AgendamentoViewModel(Veiculo veiculo, Usuario usuario)
         {
             this.Agendamento = new Agendamento();
+            this.Agendamento.Usuario = usuario;
             this.Agendamento.Veiculo = veiculo;
 
             AgendarCommand = new Command(() =>
@@ -122,17 +135,27 @@ namespace CursoXamarin.ViewModels
         {
             using (var cliente = new HttpClient())
             {
+                var dataHoraAgendamento = DataAgendamento.ToString("yyyy-MM-dd") + " " + HoraAgendamento.ToString(@"hh\:mm\:ss");
                 cliente.Timeout = TimeSpan.FromSeconds(200);
                 var camposFormulario = new FormUrlEncodedContent(new[]
                 {
-                        new KeyValuePair<string, string>("nome", "Cadastro via Xamarin"),
-                        new KeyValuePair<string, string>("telefone", "1234-5678"),
-                        new KeyValuePair<string, string>("email", "cadastro@gmail.com"),
+                        new KeyValuePair<string, string>("nome", Nome),
+                        new KeyValuePair<string, string>("telefone", Fone),
+                        new KeyValuePair<string, string>("email",  Email),
                         new KeyValuePair<string, string>("modelo", Veiculo.Nome),
                         new KeyValuePair<string, string>("preco", Convert.ToString(Veiculo.Preco)),
-                        new KeyValuePair<string, string>("data", "2022-02-04 12:00")
+                        new KeyValuePair<string, string>("data", dataHoraAgendamento)
                     });
                 var resultado = await cliente.PostAsync("http://192.168.0.47:8000/api/agendamentos", camposFormulario);
+
+                if (resultado.IsSuccessStatusCode)
+                {
+                    MessagingCenter.Send<Agendamento>(this.Agendamento, "SucessoAgendamento");
+                }
+                else
+                {
+                    MessagingCenter.Send<ArgumentException>(new ArgumentException(), "FalhaAgendamento");
+                }            
             }
                 /*HttpClient cliente = new HttpClient();
 
